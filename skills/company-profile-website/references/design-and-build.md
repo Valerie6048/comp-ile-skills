@@ -1,105 +1,105 @@
-# Desain dan implementasi website
+# Website design and implementation
 
-## Pilih implementasi sesuai kebutuhan
+## Choose an implementation that fits the needs
 
-Periksa repo, instruksi lokal, komponen, dependencies, dan perintah build yang
-tersedia. Jangan mengganti framework atau menambahkan CMS hanya untuk mengikuti
-preferensi skill. Untuk proyek baru, situs statis memadai bila konten jarang berubah
-dan tidak ada kebutuhan aplikasi. CMS, backend, atau framework dipilih ketika
-pengelolaan konten, integrasi, atau kebutuhan pengguna membenarkannya.
+Inspect the repository, local instructions, components, dependencies, and available
+build commands. Do not replace the framework or add a CMS merely to follow a
+skill preference. For a new project, a static site is sufficient when content
+changes infrequently and application features are unnecessary. Choose a CMS,
+backend, or framework when content management, integrations, or user needs justify it.
 
-Jika pengguna menetapkan platform atau penyedia hosting, ikuti pilihan tersebut.
-Jika lingkungan menyediakan workflow khusus pembuatan/hosting website, gunakan
-sesuai instruksinya tanpa menjadikan ketergantungan itu wajib bagi semua pengguna.
-Skill ini tidak membawa template kode atau dependensi vendor tertentu.
+Follow the user's chosen platform or hosting provider. If the environment provides
+a dedicated website building or hosting workflow, use it according to its
+instructions without making that dependency mandatory for every user.
+This skill does not include a code template or vendor-specific dependencies.
 
-## Arah visual dan layout
+## Visual direction and layout
 
-Tetapkan warna, tipografi, skala jarak, lebar konten, perlakuan gambar, dan gaya
-komponen dari merek serta kebutuhan pembaca. Desain profesional dapat bersifat
-formal, hangat, editorial, atau ekspresif sesuai industri. Hindari memaksakan satu
-warna, layout kartu, animasi, atau tema ke seluruh perusahaan.
+Define colors, typography, spacing, content width, image treatment, and component
+styles from the brand and audience needs. Professional design may be formal, warm,
+editorial, or expressive depending on the industry. Avoid imposing one color,
+card layout, animation style, or theme on every company.
 
-Utamakan pesan utama dan jalur tindakan. Gunakan hierarki visual, ruang kosong,
-teks terbaca, serta visual yang menunjukkan pekerjaan ketika tersedia. Navigasi
-memuat bagian yang benar-benar ada. CTA utama memakai tujuan yang konsisten;
-CTA pendamping dapat menuju layanan atau studi kasus.
+Prioritize the main message and action path. Use visual hierarchy, whitespace,
+readable text, and visuals that show the work when available. Navigation should
+include sections that actually exist. Keep the main CTA destination consistent;
+supporting CTAs can lead to services or case studies.
 
-Mulai dari lebar mobile; susun ulang grid dan navigasi sesuai konten. Konten tetap
-terbaca tanpa hover. Menu mobile menggunakan tombol dengan nama, status terbuka,
-dan perilaku keyboard yang tepat. Pastikan header tetap tidak menutup anchor atau
-elemen yang sedang fokus. Animasi mendukung pemahaman dan menghormati preferensi
-reduced motion; informasi penting tidak boleh hilang saat animasi dinonaktifkan.
+Start at mobile widths; adapt grids and navigation to the content. Content must
+remain readable without hover. Mobile menus need a button with an accessible name,
+expanded state, and appropriate keyboard behavior. Ensure fixed headers do not
+cover anchor targets or focused elements. Animation should aid understanding
+and respect reduced motion preferences; essential information must remain
+available when animation is disabled.
 
-## Aksesibilitas
+## Accessibility
 
-Gunakan WCAG 2.2 level AA sebagai sasaran bila tidak ada target pengguna yang
-lebih spesifik. Checklist skill ini mencakup sebagian pemeriksaan; kelulusan build
-atau audit otomatis tidak membuktikan kesesuaian seluruh WCAG.
+Use WCAG 2.2 Level AA as the target unless the user specifies a different one.
+This skill's checklist covers some checks; a passing build or automated audit
+does not prove full WCAG conformance.
 
-- Gunakan landmark HTML, urutan heading logis, bahasa dokumen, tautan untuk
-  navigasi, tombol untuk tindakan, dan skip link bila navigasi berulang memerlukannya.
-- Semua kontrol dapat dioperasikan dengan keyboard dan memiliki fokus terlihat.
-  Hindari focus trap; modal mengelola fokus masuk, keluar, dan pengembalian fokus.
-- Gunakan alt yang bermakna untuk gambar informatif dan alt kosong untuk dekorasi.
-  Kontrol ikon memiliki nama yang dapat dibaca teknologi bantu.
-- Kontras teks normal setidaknya 4.5:1; teks besar setidaknya 3:1 sesuai definisi
-  WCAG. Jangan menganggap semua heading otomatis termasuk teks besar.
-- Untuk target pointer, ikuti minimum 24 x 24 CSS px atau aturan jarak/pengecualian
-  pada SC 2.5.8. Target sekitar 44 x 44 px dapat dipilih untuk kenyamanan; ini
-  rekomendasi desain, bukan minimum universal WCAG AA.
-- Jangan mengandalkan warna saja untuk status. Berikan label input, petunjuk,
-  pesan kesalahan yang terhubung, serta pengumuman status yang sesuai.
-- Periksa pembesaran teks dan reflow, termasuk viewport sempit; jangan mengunci
-  zoom. Hindari horizontal scroll untuk konten biasa.
+- Use HTML landmarks, a logical heading order, document language, links for
+  navigation, buttons for actions, and a skip link when repeated navigation needs it.
+- All controls must work with the keyboard and have visible focus. Avoid focus
+  traps; modals must manage entering, leaving, and returning focus.
+- Use meaningful alt text for informative images and empty alt text for decoration.
+  Icon controls need names that assistive technology can read.
+- Normal text contrast must be at least 4.5:1; large text at least 3:1 under the
+  WCAG definition. Do not assume all headings qualify as large text.
+- For pointer targets, follow the 24 x 24 CSS px minimum or the spacing/exceptions
+  in SC 2.5.8. Targets around 44 x 44 px may improve comfort; this is a design
+  recommendation, not a universal WCAG AA minimum.
+- Do not rely on color alone for status. Provide input labels, instructions,
+  associated error messages, and appropriate status announcements.
+- Check text enlargement and reflow, including narrow viewports; do not disable
+  zoom. Avoid horizontal scrolling for ordinary content.
 
-## Kontak dan formulir
+## Contact channels and forms
 
-Pilih kanal dari data perusahaan: telepon, email, WhatsApp, atau formulir. Validasi
-format tujuan; untuk WhatsApp gunakan nomor internasional dan pesan yang di-encode.
-Jangan menambahkan nomor atau alamat contoh sebagai tujuan aktif.
+Choose channels from company data: phone, email, WhatsApp, or a form. Validate
+destination formats; use an international number and an encoded message for
+WhatsApp. Do not activate sample numbers or addresses as contact destinations.
 
-Jika backend tidak tersedia, gunakan kanal kontak yang terkonfirmasi. Jika pengguna
-meminta mockup formulir, beri label bahwa pengiriman belum terhubung dan jangan
-menampilkan sukses pengiriman palsu. `mailto:` membuka aplikasi email; jangan
-menyebutnya sebagai pengiriman yang sudah diterima perusahaan.
+If no backend is available, use confirmed contact channels. If the user requests
+a form mockup, label submission as unconnected and do not display a false success
+message. `mailto:` opens an email application; do not describe it as a message
+already received by the company.
 
-Untuk formulir terintegrasi, implementasikan validasi server, status loading,
-kegagalan dan keberhasilan yang nyata, perlindungan spam yang sesuai, serta
-pengelolaan secret di server. Kumpulkan data secukupnya. Kebijakan privasi dan
-analytics mengikuti kebutuhan serta cakupan pengguna; jangan menambahkan teks
-kepatuhan hukum, pelacak, atau cookie banner yang tidak didukung implementasi.
-Uji pengiriman memakai endpoint uji; pengiriman ke inbox produksi memerlukan
-otorisasi yang sesuai.
+For integrated forms, implement server-side validation, loading states, real
+failure and success states, appropriate spam protection, and server-side secret
+management. Collect only the data needed. Privacy policies and analytics follow
+the user's requirements and scope; do not add legal compliance text, trackers,
+or cookie banners unsupported by the implementation. Test submissions through
+a test endpoint; submissions to a production inbox require suitable authorization.
 
-## SEO dan performa
+## SEO and performance
 
-- Berikan title dan meta description yang menjelaskan setiap halaman. Pastikan
-  konten utama dapat diakses crawler melalui rendering yang sesuai stack.
-- Gunakan tautan internal dengan elemen anchor dan href yang benar. Untuk banyak
-  halaman, periksa direct URL, refresh, dan navigasi antarhalaman.
-- Gunakan heading dan teks deskriptif yang membantu pembaca; hindari keyword
-  stuffing dan halaman layanan kosong.
-- Tambahkan favicon dan metadata berbagi jika aset tersedia. URL absolut untuk
-  canonical, Open Graph, sitemap, dan data terstruktur membutuhkan domain nyata;
-  catat konfigurasi domain yang tertunda, jangan mengisi domain fiktif.
-- Untuk situs yang dipublikasikan, sesuaikan robots dan sitemap dengan strategi
-  indeks. Preview/draft tidak otomatis boleh diindeks.
-- Structured data bersifat opsional dan hanya mencerminkan fakta terlihat yang
-  benar. Jangan mengarang rating, ulasan, alamat, atau klaim organisasi.
-- Optimalkan ukuran dan format gambar, sediakan dimensi, serta lazy-load gambar
-  di bawah lipatan. Hindari lazy-loading gambar utama yang menghambat tampilan awal.
-  Batasi font, script pihak ketiga, dan JavaScript sesuai kebutuhan.
-- Gunakan hasil pengukuran ketika membahas performa. Jangan menjanjikan ranking,
-  pengindeksan, atau skor Lighthouse tertentu tanpa pemeriksaan.
+- Add a title and meta description that explain each page. Ensure crawlers can
+  access the main content through rendering appropriate to the stack.
+- Use internal links with anchor elements and valid hrefs. For multiple pages,
+  check direct URLs, refresh, and navigation between pages.
+- Use headings and descriptive text that help readers; avoid keyword stuffing
+  and empty service pages.
+- Add a favicon and sharing metadata when assets are available. Absolute URLs
+  for canonical links, Open Graph, sitemaps, and structured data need a real
+  domain; record pending domain configuration instead of inventing a domain.
+- For published sites, configure robots and sitemaps for the indexing strategy.
+  Previews and drafts should not automatically be indexed.
+- Structured data is optional and must reflect accurate, visible facts. Do not
+  invent ratings, reviews, addresses, or organizational claims.
+- Optimize image sizes and formats, provide dimensions, and lazy-load images
+  below the fold. Avoid lazy-loading a main image if it delays the initial view.
+  Limit fonts, third-party scripts, and JavaScript to what is needed.
+- Use measurements when discussing performance. Do not promise rankings,
+  indexing, or specific Lighthouse scores without checks.
 
-## Rujukan primer
+## Primary references
 
-Gunakan dokumentasi stack yang dipakai untuk API dan perilaku yang dapat berubah.
-Rujukan standar ini dapat dibaca saat detail implementasi atau audit membutuhkannya:
+Use the chosen stack's documentation for APIs and behavior that can change.
+Read these standards references when implementation or audit details require them:
 
 - [WCAG 2.2](https://www.w3.org/TR/WCAG22/)
-- [Kontras teks](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)
-- [Ukuran target](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html)
+- [Text contrast](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)
+- [Target size](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html)
 - [Google SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)
-- [Tautan yang dapat di-crawl](https://developers.google.com/search/docs/crawling-indexing/links-crawlable)
+- [Crawlable links](https://developers.google.com/search/docs/crawling-indexing/links-crawlable)

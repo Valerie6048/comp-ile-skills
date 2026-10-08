@@ -1,88 +1,89 @@
-# Pemeriksaan dan serah terima
+# Quality checks and handoff
 
-Sesuaikan pemeriksaan dengan perubahan. Untuk revisi satu bagian, uji bagian itu
-dan interaksi yang terdampak; tidak perlu mengulang seluruh alur tanpa alasan.
-Untuk website baru, periksa seluruh halaman dan jalur utama yang dibuat.
+Match checks to the changes. For a revision to one section, test that section and
+affected interactions; do not repeat the entire workflow without a reason.
+For a new website, check all pages and main paths that were built.
 
-Catat tiap pemeriksaan sebagai lulus, perlu perbaikan, tidak berlaku, atau belum
-diverifikasi. Sertakan bukti ringkas seperti perintah, viewport, route, atau perilaku
-yang diamati. Jangan menyamakan telaah kode dengan pengujian browser.
+Record each check as passed, needs improvement, not applicable, or unverified.
+Include concise evidence such as the command, viewport, route, or observed
+behavior. Do not equate code review with browser testing.
 
-## Kesesuaian dengan brief
+## Brief alignment
 
-Gunakan permintaan pengguna terbaru dan brief/spesifikasi yang masih berlaku
-sebagai acuan. Untuk tiap kebutuhan material dalam cakupan, periksa hasil yang
-dilihat pengunjung dan bukti pemenuhannya. Pada revisi kecil, cukup nilai bagian
-yang berubah beserta dampaknya; kelulusan build tidak menutup kebutuhan yang
-masih hilang atau salah. Pemeriksaan ini mencakup:
+Use the latest user request and applicable brief/specification as the reference.
+For each material requirement within scope, check the visitor-facing outcome
+and evidence that it is met. For small revisions, assess the changed parts and
+their impact; a passing build does not compensate for missing or incorrect
+requirements. This assessment covers:
 
-- Pengunjung dapat menemukan bidang usaha, layanan, target pelanggan, dan kontak.
-- Setiap klaim material memiliki sumber dari pengguna atau rujukan yang sesuai.
-- Portofolio menjelaskan peran perusahaan; data contoh dan proyek konseptual
-  diberi label. Tidak ada logo klien, testimoni, atau angka buatan.
-- Konten, istilah, CTA, dan kontak konsisten antarhalaman dan bahasa.
-- Placeholder draft tidak diperlakukan sebagai konten siap publikasi. Daftar data
-  yang belum tersedia berada dalam catatan serah terima.
-- Struktur, bahasa, pesan, dan tindakan utama mengikuti acuan. Fitur tambahan
-  yang mengubah cakupan dibahas terhadap permintaan pengguna.
-- Kriteria penerimaan yang relevan memiliki bukti. Jika kanal kontak atau fitur
-  wajib belum aktif, kebutuhan itu tetap belum terpenuhi walaupun layout selesai.
+- Visitors can find the industry, services, target customers, and contact details.
+- Each material claim has a user-provided source or suitable reference.
+- Portfolio entries explain the company's role; sample data and conceptual
+  projects are labeled. No invented client logos, testimonials, or numbers.
+- Content, terminology, CTAs, and contacts are consistent across pages and languages.
+- Draft placeholders are not treated as publishable content. Missing information
+  is listed in the handoff notes.
+- Structure, language, message, and main action follow the reference. Discuss
+  additional features that change the scope against the user's request.
+- Relevant acceptance criteria have evidence. If a contact channel or required
+  feature is inactive, the requirement remains unmet even if the layout is complete.
 
-## Kualitas teknis
+## Technical quality
 
-Periksa implementasi sesuai stack, konvensi proyek, serta perubahan yang dibuat.
-Pemeriksaan berikut terpisah dari penilaian kesesuaian dengan brief.
+Check the implementation against the stack, project conventions, and changes made.
+The following checks are separate from the brief alignment assessment.
 
-### Build dan perilaku
+### Build and behavior
 
-- Jalankan build, lint, atau typecheck yang relevan jika disediakan proyek.
-- Buka halaman utama dan route lain melalui preview bila alat browser tersedia.
-  Periksa direct URL dan refresh untuk situs dengan beberapa halaman.
-- Periksa navigasi, menu mobile, anchor, tombol, filter portofolio, dan pergantian
-  bahasa yang benar-benar dibuat. Tidak ada kontrol yang menjanjikan aksi kosong.
-- Periksa URL kontak dan encoding; jangan mengirim pesan nyata tanpa otorisasi.
-- Untuk formulir: uji input tidak valid, loading, kegagalan jaringan, keberhasilan
-  endpoint uji, dan pencegahan pengiriman berulang jika relevan. Pastikan UI tidak
-  mengatakan terkirim jika hanya melakukan simulasi.
-- Periksa asset hilang, tautan rusak, error console dan request yang gagal.
+- Run relevant build, lint, or type checks when the project provides them.
+- Open the main page and other routes in a preview when browser tools are available.
+  Check direct URLs and refresh for sites with multiple pages.
+- Check the navigation, mobile menu, anchors, buttons, portfolio filters, and
+  language switching that were actually built. Controls must deliver their promised actions.
+- Check contact URLs and encoding; do not send real messages without authorization.
+- For forms, test invalid input, loading, network failure, test endpoint success,
+  and duplicate submission prevention where relevant. Ensure the UI does not
+  claim delivery when it only simulates a submission.
+- Check missing assets, broken links, console errors, and failed requests.
 
-### Tampilan dan aksesibilitas
+### Appearance and accessibility
 
-- Inspeksi mobile sempit, tablet bila layout berubah, dan desktop. Contoh viewport
-  praktis: 375, 768, dan 1440 CSS px; tambah 320 px untuk reflow dan titik yang
-  menunjukkan masalah. Lebar ini pilihan uji, bukan bukti lengkap standar.
-- Periksa keterbacaan, hierarki, pemotongan teks/gambar, overflow, dan elemen tetap
-  yang menutupi konten. Coba pembesaran teks dan reduced motion bila relevan.
-- Telusuri jalur utama dengan keyboard: urutan fokus, fokus terlihat, menu/modal,
-  tombol, dan formulir. Periksa nama kontrol, heading, landmark, alt, dan label.
-- Ukur kontras pasangan warna yang digunakan, termasuk teks di atas gambar.
-- Gunakan audit otomatis yang tersedia untuk membantu menemukan masalah;
-  perbaiki temuan yang relevan dan tetap lakukan pemeriksaan manual.
+- Inspect narrow mobile, tablet if the layout changes, and desktop views.
+  Practical example widths: 375, 768, and 1440 CSS px; add 320 px for reflow
+  and any widths that expose problems. These are test choices, not complete
+  evidence of standards conformance.
+- Check readability, hierarchy, text/image clipping, overflow, and fixed elements
+  covering content. Try text enlargement and reduced motion where relevant.
+- Follow main paths with the keyboard: focus order, visible focus, menus/modals,
+  buttons, and forms. Check control names, headings, landmarks, alt text, and labels.
+- Measure contrast for the color pairs used, including text over images.
+- Use available automated audits to help discover issues; fix relevant findings
+  and retain manual checks.
 
-### SEO, performa, dan kesiapan publikasi
+### SEO, performance, and publication readiness
 
-- Periksa title, description, bahasa dokumen, internal links, serta konten yang
-  dapat diakses sesuai rendering stack. Periksa metadata berbagi jika dibuat.
-- Verifikasi canonical, sitemap, robots, dan structured data bila diterapkan.
-  Domain yang belum tersedia adalah pekerjaan konfigurasi tertunda.
-- Periksa berat gambar, dimensi, font, dan script. Laporkan skor/metrik hanya jika
-  diukur, beserta kondisi pengukurannya. Jangan memakai skor sebagai sertifikasi.
-- Jika publikasi termasuk permintaan, verifikasi konfigurasi domain, route dan
-  HTTPS melalui alat yang tersedia sesudah deployment. Jika tidak termasuk,
-  serahkan preview dan instruksi yang sesuai tanpa melakukan publikasi sendiri.
+- Check titles, descriptions, document language, internal links, and accessible
+  content according to the rendering stack. Check sharing metadata if implemented.
+- Verify canonical links, sitemaps, robots, and structured data when implemented.
+  An unavailable domain remains pending configuration work.
+- Check image weight, dimensions, fonts, and scripts. Report scores/metrics only
+  when measured, together with measurement conditions. Do not treat scores as certification.
+- If publication is requested, verify the domain configuration, routes, and HTTPS
+  through available tools after deployment. Otherwise, provide the preview and
+  suitable instructions without publishing on your own.
 
-## Serah terima
+## Handoff
 
-Laporkan hasil kesesuaian dengan brief dan kualitas teknis secara terpisah.
-Gunakan paragraf singkat untuk tugas kecil, atau tabel ketika banyak kebutuhan
-perlu ditelusuri. Pada tiap sisi, sebutkan temuan yang belum selesai serta batas
-verifikasi; kelulusan satu sisi tidak otomatis meluluskan sisi lainnya.
+Report brief alignment and technical quality separately. Use a short paragraph
+for small tasks or a table when many requirements need tracking. For each assessment,
+state unfinished findings and verification limits; passing one does not
+automatically mean passing the other.
 
-Berikan lokasi kode atau URL preview, cara menjalankan, tempat mengubah layanan,
-portofolio dan kontak, keputusan utama, serta pemeriksaan yang dilakukan. Jelaskan
-mana yang masih berupa draft, integrasi yang belum aktif, dan pekerjaan sebelum
-publikasi. Jika build/browser tidak tersedia, tuliskan keterbatasan spesifik dan
-pemeriksaan yang masih diperlukan; tetap serahkan pekerjaan yang selesai.
+Provide the code location or preview URL, run instructions, where to edit services,
+portfolio entries and contacts, key decisions, and completed checks. Explain what
+remains a draft, which integrations are inactive, and what must be done before
+publication. If a build or browser is unavailable, state the specific limitation
+and checks still needed; hand over the completed work.
 
-Hindari klaim "sesuai seluruh WCAG", "aman sepenuhnya", "SEO terjamin", atau
-"siap produksi" jika bukti dan cakupan pemeriksaan tidak mendukungnya.
+Avoid claims such as "fully WCAG conformant," "completely secure," "guaranteed SEO,"
+or "production ready" when the evidence and check scope do not support them.

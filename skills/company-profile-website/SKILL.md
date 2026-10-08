@@ -1,109 +1,110 @@
 ---
 name: company-profile-website
-description: "Buat atau perbaiki website company profile: olah brief bisnis, susun konten layanan dan portofolio, desain, implementasikan, lalu periksa kualitasnya. Gunakan untuk website profil perusahaan dan situs korporat yang menjelaskan bisnis serta mengarahkan calon klien ke kontak."
+description: "Create or improve company profile websites: turn a business brief into service and portfolio content, design and implement the site, then check its quality. Use for company profile and corporate websites that explain the business and guide prospective clients to contact it."
 ---
 
 # Company Profile Website
 
-Bantu pengunjung memahami siapa perusahaan ini, apa yang dikerjakan, siapa yang
-dilayani, bukti kemampuan yang tersedia, dan cara memulai kerja sama. Hasil akhir
-mengikuti tujuan pengguna: brief, konten, desain, implementasi website, atau revisi
-situs yang sudah ada. Untuk permintaan pembuatan website, lanjutkan sampai kode
-dan pemeriksaan yang dapat dilakukan selesai.
+Help visitors understand who the company is, what it does, whom it serves, the
+available evidence of its capabilities, and how to start working together. Match
+the deliverable to the user's goal: a brief, content, design, website
+implementation, or revisions to an existing site. For website creation requests,
+continue until the code and the checks available in the environment are complete.
 
-## Ruang lingkup dan keputusan awal
+## Scope and initial decisions
 
-- Ikuti bahasa pengguna; gunakan bahasa website yang mereka minta.
-- Baca bahan perusahaan dan instruksi proyek sebelum bertanya. Pada situs yang
-  sudah ada, pertahankan stack, pola komponen, dan identitas merek yang relevan.
-- Bedakan pembuatan baru, revisi terbatas, serta penyusunan konten saja. Kerjakan
-  tahap yang diperlukan; pada revisi kecil, gunakan brief yang ada dan langsung
-  kerjakan bagian yang terdampak.
-- Tidak ada susunan halaman atau tema visual tunggal yang diwajibkan skill ini.
-  Tentukan struktur dari industri, pembaca, bukti, dan tujuan website.
-- Skill ini mandiri. Gunakan alat desain, browser, atau hosting yang tersedia bila
-  relevan; jangan mewajibkan skill lain, layanan berbayar, atau framework tertentu.
+- Follow the user's language; use the website language they request.
+- Read company materials and project instructions before asking questions. For
+  existing sites, preserve the relevant stack, component patterns, and brand identity.
+- Distinguish new builds, limited revisions, and content-only work. Complete the
+  stages needed; for small revisions, use the existing brief and work directly
+  on the affected parts.
+- This skill does not require a single page structure or visual theme. Choose the
+  structure based on the industry, audience, evidence, and website goals.
+- This skill is self-contained. Use available design, browser, or hosting tools
+  when relevant; do not require another skill, paid service, or specific framework.
 
-## 1. Pahami brief dan bukti
+## 1. Understand the brief and evidence
 
-Baca [brief-and-content.md](references/brief-and-content.md) saat mengumpulkan
-data, menulis konten, atau menilai klaim perusahaan. Gunakan
-[company-brief.md](assets/company-brief.md) sebagai formulir opsional yang dapat
-diisi pengguna; jangan meminta seluruh formulir ketika jawabannya sudah tersedia.
+Read [brief-and-content.md](references/brief-and-content.md) when gathering
+information, writing content, or assessing company claims. Use
+[company-brief.md](assets/company-brief.md) as an optional form for the user;
+do not request the entire form when the answers are already available.
 
-Tetapkan identitas dan bidang usaha, calon pembaca, layanan utama, tujuan website,
-kontak, aset merek, serta batas teknis. Ajukan hanya pertanyaan yang memengaruhi
-hasil, dalam kelompok kecil. Data tambahan yang belum ada tidak perlu menghentikan
-pekerjaan: hilangkan bagian opsional, nyatakan asumsi desain, dan catat kekurangan.
-Jika identitas atau bidang usaha belum diketahui, minta informasi itu sebelum
-menulis klaim spesifik. Sambil menunggu, kerjakan struktur yang tidak bergantung
-pada jawabannya. Jangan mengarang fakta, proyek, hasil, atau kontak.
+Establish the company's identity and industry, intended audience, main services,
+website goals, contact details, brand assets, and technical constraints. Ask only
+questions that affect the outcome, in small groups. Missing supplementary data
+does not need to stop progress: omit optional sections, state design assumptions,
+and record gaps. If the company's identity or industry is unknown, ask for that
+information before writing specific claims. While waiting, work on structure that
+does not depend on the answers. Do not invent facts, projects, results, or contacts.
 
-**Selesai ketika:** identitas, bidang usaha, dan layanan utama memiliki dasar data;
-pembaca serta tujuan sudah diketahui atau dinyatakan sebagai asumsi. Kekurangan
-data yang menghambat pekerjaan dibedakan dari bahan opsional yang dapat menyusul.
+**Done when:** the identity, industry, and main services are supported by information;
+the audience and goals are known or stated as assumptions. Distinguish missing
+information that blocks work from optional materials that can be supplied later.
 
-## 2. Susun pesan dan struktur
+## 2. Define the message and structure
 
-Rumuskan satu kalimat yang menjelaskan perusahaan, layanan, dan pasar yang
-dilayani. Tentukan tindakan utama pengunjung, seperti menghubungi perusahaan
-atau melihat proyek. Pilih satu halaman atau beberapa halaman berdasarkan
-kebutuhan konten, navigasi, dan preferensi pengguna.
+Write one sentence that explains the company, its services, and the market it
+serves. Identify the visitor's main action, such as contacting the company or
+viewing projects. Choose one page or multiple pages based on content needs,
+navigation, and the user's preferences.
 
-Susun bagian tentang perusahaan, layanan, bukti pekerjaan, dan kontak sejauh
-didukung data. Jadikan visi-misi, tim, testimoni, sertifikasi, blog, dan FAQ opsional.
-Untuk portofolio, jelaskan kebutuhan, peran perusahaan, solusi, dan hasil yang
-terbukti. Jangan memaksakan logo klien atau angka untuk mengisi ruang kosong.
+Include company information, services, evidence of work, and contact details
+where supported by data. Keep mission and vision, team profiles, testimonials,
+certifications, a blog, and FAQs optional. For portfolio entries, explain the need,
+the company's role, the solution, and verified results. Do not add client logos or
+numbers merely to fill empty space.
 
-**Selesai ketika:** struktur, pesan utama, CTA, dan batas pekerjaan cukup jelas
-untuk dikerjakan; hasil yang diharapkan dapat diperiksa dari sudut pengunjung.
-Brief yang sudah memadai dapat menjadi acuan langsung. Untuk website baru atau
-cakupan kompleks yang masih membutuhkan acuan, baca bagian spesifikasi di
+**Done when:** the structure, main message, CTA, and scope are clear enough to
+implement; the intended outcome can be checked from a visitor's perspective.
+An adequate brief can serve as the reference directly. For a new website or
+complex scope that still needs a reference, read the specification section in
 [project-notes.md](references/project-notes.md).
 
-## 3. Desain dan implementasikan
+## 3. Design and implement
 
-Baca [design-and-build.md](references/design-and-build.md) ketika menentukan
-layout, membangun website, atau mengubah perilaku interaktif.
+Read [design-and-build.md](references/design-and-build.md) when choosing layouts,
+building the website, or changing interactive behavior.
 
-Pilih arah visual dari merek, industri, pembaca, dan aset yang tersedia. Nyatakan
-keputusan desain secara singkat lalu lanjutkan implementasi. Jangan mewajibkan
-persetujuan setiap tahap ketika pengguna sudah meminta pembuatan website.
-Hormati permintaan untuk meninjau konsep terlebih dahulu jika ada.
+Choose a visual direction based on the brand, industry, audience, and available
+assets. Briefly explain design decisions, then proceed with implementation.
+Do not require approval at every stage when the user has already requested a
+website. Respect an explicit request to review the concept first.
 
-Gunakan stack yang diminta atau yang sudah ada. Untuk proyek baru tanpa pilihan
-stack, pilih solusi paling sederhana yang memenuhi kebutuhan dan jelaskan
-asumsinya. Gunakan konten nyata; tempatkan daftar data yang belum tersedia di
-catatan serah terima. Jika pengguna meminta mockup atau demo, beri label jelas
-pada data contoh agar tidak terbaca sebagai bukti bisnis nyata.
+Use the requested or existing stack. For a new project without a chosen stack,
+select the simplest solution that meets the requirements and explain the
+assumption. Use real content; put missing information in the handoff notes.
+If the user requests a mockup or demo, clearly label sample data so it cannot be
+mistaken for evidence of real business work.
 
-**Selesai ketika:** bagian yang diminta tersedia dalam kode atau artefak yang dapat
-ditinjau, memakai konten yang didukung data, dan siap diperiksa terhadap acuan.
-Fitur wajib yang belum aktif tetap dicatat sebagai pekerjaan belum selesai.
+**Done when:** the requested parts are available as reviewable code or artifacts,
+use supported content, and are ready to check against the reference. Required
+features that are not active remain recorded as unfinished work.
 
-## 4. Periksa dan serahkan
+## 4. Check and hand off
 
-Baca [quality-checklist.md](references/quality-checklist.md) sebelum menyerahkan
-implementasi. Jalankan build dan pemeriksaan proyek yang relevan jika tersedia.
-Periksa kesesuaian dengan brief dan kualitas teknis sebagai dua hasil yang
-terpisah, dengan kedalaman sesuai perubahan. Perbaiki temuan dalam cakupan dan
-pisahkan pemeriksaan yang dilakukan dari yang belum dapat diverifikasi.
+Read [quality-checklist.md](references/quality-checklist.md) before handing off
+the implementation. Run the build and relevant project checks when available.
+Assess brief alignment and technical quality as two separate results, with depth
+proportional to the changes. Fix findings within scope and distinguish completed
+checks from those that could not be verified.
 
-Serahkan file atau preview yang dapat diakses, ringkasan perubahan, cara menjalankan
-dan memperbarui konten, hasil pemeriksaan, serta data atau integrasi yang masih
-diperlukan. Jangan menyebut website sudah dipublikasikan, formulir sudah mengirim,
-atau situs memenuhi seluruh WCAG tanpa bukti pemeriksaan yang sesuai.
+Provide accessible files or a preview, a summary of changes, instructions for
+running the site and updating content, check results, and any data or integrations
+still needed. Do not claim that the website is published, a form sends messages,
+or the site fully conforms to WCAG without suitable evidence.
 
-**Selesai ketika:** kebutuhan dalam cakupan telah diperiksa, temuan yang dapat
-ditangani sudah diperbaiki, dan hasil beserta batas verifikasinya diserahkan.
-Jika kebutuhan wajib masih belum terpenuhi, nyatakan pekerjaan itu belum selesai.
-Saat pekerjaan panjang membutuhkan catatan, akan dilanjutkan lintas sesi, atau
-dipindahkan ke provider lain, baca bagian kelanjutan di
-[project-notes.md](references/project-notes.md). Untuk pekerjaan singkat yang
-tuntas, ringkasan serah terima sudah cukup.
+**Done when:** the requirements within scope have been checked, actionable findings
+have been fixed, and the results and verification limits have been handed over.
+If a required feature remains unmet, state that the work is unfinished.
+When lengthy work needs notes, will continue across sessions, or will move to
+another provider, read the continuation section in
+[project-notes.md](references/project-notes.md). A handoff summary is sufficient
+for a short, completed task.
 
-Publikasi, pengiriman pesan ke perusahaan atau klien, pemasangan analytics, dan
-integrasi eksternal mengikuti cakupan serta otorisasi pengguna. Permintaan membuat
-website lokal tidak otomatis mengizinkan tindakan tersebut. Jika publikasi sudah
-diminta secara jelas, lanjutkan dengan alat hosting dan aturan lingkungan yang
-berlaku tanpa meminta izin yang sama lagi.
+Publishing, messaging companies or clients, installing analytics, and external
+integrations follow the user's scope and authorization. A request for a local
+website does not automatically authorize those actions. If publication has
+already been clearly requested, proceed with available hosting tools and the
+environment's rules without asking for the same permission again.

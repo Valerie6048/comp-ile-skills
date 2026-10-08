@@ -1,24 +1,24 @@
 import { readFile } from 'node:fs/promises';
 import { installSkill, providerNames } from './installer.js';
 
-const HELP = `comp-ile - pemasang skill website company profile
+const HELP = `comp-ile - company profile website skill installer
 
-Penggunaan:
-  comp-ile init [direktori] [opsi]
+Usage:
+  comp-ile init [directory] [options]
 
-Opsi:
-  --provider <nama>  all (default), codex, claude-code, antigravity
-                     Pisahkan dengan koma atau ulangi opsi untuk beberapa provider.
-  --dir <direktori>  Direktori tujuan; default direktori kerja saat ini.
-  --force            Perbarui file paket yang berbeda; file tambahan tetap disimpan.
-  --dry-run          Tampilkan rencana tanpa menulis file.
-  -h, --help         Tampilkan bantuan.
-  -v, --version      Tampilkan versi.
+Options:
+  --provider <name>  all (default), codex, claude-code, antigravity
+                     Separate with commas or repeat the option for multiple providers.
+  --dir <directory> Destination directory; defaults to the current working directory.
+  --force            Update differing packaged files; preserve additional files.
+  --dry-run          Display the plan without writing files.
+  -h, --help         Display help.
+  -v, --version      Display the version.
 
-Contoh:
+Examples:
   comp-ile init
   comp-ile init ./website --provider claude-code
-  comp-ile init --dir "./website perusahaan" --provider codex,antigravity
+  comp-ile init --dir "./company website" --provider codex,antigravity
   comp-ile init --dry-run
 `;
 
@@ -29,7 +29,7 @@ export function parseArgs(args) {
   }
   if (['--help', '-h'].includes(args[0])) return { action: 'help' };
   if (args[0] !== 'init') {
-    throw new Error(`Perintah tidak dikenal: ${args[0]}. Gunakan comp-ile --help.`);
+    throw new Error(`Unknown command: ${args[0]}. Use comp-ile --help.`);
   }
 
   const options = { action: 'init', directory: '.', providers: [], force: false, dryRun: false };
@@ -37,7 +37,7 @@ export function parseArgs(args) {
   let positionalOnly = false;
   const setDirectory = (value) => {
     if (!value || directoryWasSet) {
-      throw new Error('Berikan satu direktori tujuan, melalui argumen atau --dir.');
+      throw new Error('Provide one destination directory, as an argument or through --dir.');
     }
     options.directory = value;
     directoryWasSet = true;
@@ -67,7 +67,7 @@ export function parseArgs(args) {
       const flag = equalIndex === -1 ? arg : arg.slice(0, equalIndex);
       const value = equalIndex === -1 ? args[++index] : arg.slice(equalIndex + 1);
       if (!value || (equalIndex === -1 && value.startsWith('-'))) {
-        throw new Error(`${flag} membutuhkan nilai.`);
+        throw new Error(`${flag} requires a value.`);
       }
       if (flag === '--dir') {
         setDirectory(value);
@@ -75,14 +75,14 @@ export function parseArgs(args) {
         const names = value.split(',').map((name) => name.trim());
         for (const name of names) {
           if (name !== 'all' && !providerNames.includes(name)) {
-            throw new Error(`Provider tidak dikenal: ${name || '(kosong)'}. Pilih all, ${providerNames.join(', ')}.`);
+            throw new Error(`Unknown provider: ${name || '(empty)'}. Choose all, ${providerNames.join(', ')}.`);
           }
         }
         options.providers.push(...names);
       }
       continue;
     }
-    if (arg.startsWith('-')) throw new Error(`Opsi tidak dikenal: ${arg}. Gunakan comp-ile --help.`);
+    if (arg.startsWith('-')) throw new Error(`Unknown option: ${arg}. Use comp-ile --help.`);
     setDirectory(arg);
   }
 
@@ -106,13 +106,13 @@ export async function runCLI(args) {
   }
 
   const result = await installSkill(options);
-  console.log(`${options.dryRun ? 'Rencana pemasangan' : 'Proyek'}: ${result.directory}`);
+  console.log(`${options.dryRun ? 'Installation plan' : 'Project'}: ${result.directory}`);
   for (const target of result.targets) {
     const changed = target.files.filter((file) => file.action !== 'unchanged').length;
     const unchanged = target.files.length - changed;
-    console.log(`  ${target.relativePath} (${changed} ${options.dryRun ? 'akan ditulis' : 'ditulis'}, ${unchanged} sudah sama)`);
+    console.log(`  ${target.relativePath} (${changed} ${options.dryRun ? 'to write' : 'written'}, ${unchanged} unchanged)`);
   }
   console.log(options.dryRun
-    ? 'Dry run selesai; tidak ada file yang ditulis.'
-    : 'Skill siap ditemukan oleh aplikasi tujuan. Buka atau reload sesi jika belum muncul.');
+    ? 'Dry run complete; no files were written.'
+    : 'The skill is ready for discovery by the target application. Open or reload the session if it does not appear.');
 }

@@ -1,52 +1,52 @@
-# Pemasangan lintas provider
+# Cross-provider installation
 
-Simpan satu sumber di `skills/company-profile-website/`. CLI `comp-ile init`
-memasang seluruh file paket, termasuk `references/` dan `assets/`, ke lokasi
-yang dibaca aplikasi tujuan. Tautan relatif dalam instruksi tetap berfungsi.
+Keep one source in `skills/company-profile-website/`. The `comp-ile init` CLI
+installs all packaged skill files, including `references/` and `assets/`, into
+the location read by the target application. Relative instruction links keep working.
 
-## Pasang CLI dari GitHub
+## Install the CLI from GitHub
 
-Memerlukan Node.js 20 atau lebih baru, npm, serta Git untuk mengambil paket dari
-GitHub. Setelah perubahan CLI tersedia di repository GitHub:
+Requires Node.js 20 or later, npm, and Git to fetch the package from GitHub:
 
 ```sh
 npm install -g github:Valerie6048/comp-ile-skills
 comp-ile init
 ```
 
-Command `init` menggunakan direktori kerja saat ini. Untuk tujuan lain:
+The `init` command uses the current working directory. For another destination:
 
 ```sh
 comp-ile init ./website
-comp-ile init --dir "./website perusahaan"
+comp-ile init --dir "./company website"
 ```
 
-Direktori yang belum ada dibuat otomatis. Default memasang untuk ketiga provider
-dengan dua lokasi: Codex dan Antigravity berbagi `.agents/skills/`, sedangkan
-Claude Code memakai `.claude/skills/`.
+Missing directories are created automatically. By default, all three providers
+are supported through two locations: Codex and Antigravity share `.agents/skills/`,
+while Claude Code uses `.claude/skills/`.
 
-Jika tidak ingin instalasi global, jalankan sekali melalui npm:
+For a one-time run without global installation:
 
 ```sh
 npx --yes --package=github:Valerie6048/comp-ile-skills comp-ile init ./website
 ```
 
-Pengambilan GitHub memakai [npm install](https://docs.npmjs.com/cli/v11/commands/npm-install/),
-nama command memakai [`bin`](https://docs.npmjs.com/cli/v11/configuring-npm/package-json/#bin),
-dan eksekusi paket sementara memakai [npm exec/npx](https://docs.npmjs.com/cli/v11/commands/npm-exec/).
-Paket ini belum diterbitkan ke registry npm; gunakan sumber GitHub di command.
+GitHub fetching uses [npm install](https://docs.npmjs.com/cli/v11/commands/npm-install/),
+the command name uses [`bin`](https://docs.npmjs.com/cli/v11/configuring-npm/package-json/#bin),
+and temporary package execution uses [npm exec/npx](https://docs.npmjs.com/cli/v11/commands/npm-exec/).
+This package has not been published to the npm registry; use the GitHub source
+in the command.
 
-## Opsi CLI
+## CLI options
 
-| Opsi | Perilaku |
+| Option | Behavior |
 | --- | --- |
-| `init [direktori]` | Memasang ke direktori ini; default direktori kerja |
-| `--dir <direktori>` | Alternatif argumen tujuan; gunakan satu bentuk saja |
-| `--provider <nama>` | `all` (default), `codex`, `claude-code`, atau `antigravity` |
-| `--provider codex,claude-code` | Memilih beberapa provider; opsi juga dapat diulang |
-| `--dry-run` | Memeriksa tujuan dan menampilkan rencana tanpa menulis |
-| `--force` | Memperbarui file paket yang berbeda, mempertahankan file tambahan |
-| `--help` / `--version` | Bantuan atau versi CLI |
+| `init [directory]` | Install into this directory; defaults to the working directory |
+| `--dir <directory>` | Alternative destination argument; use only one form |
+| `--provider <name>` | `all` (default), `codex`, `claude-code`, or `antigravity` |
+| `--provider codex,claude-code` | Select multiple providers; the option can also be repeated |
+| `--dry-run` | Check destinations and display the plan without writing |
+| `--force` | Update differing packaged files while preserving additional files |
+| `--help` / `--version` | CLI help or version |
 
 ```sh
 comp-ile init --provider claude-code
@@ -55,96 +55,102 @@ comp-ile init ./website --dry-run
 comp-ile init ./website --force
 ```
 
-Menjalankan ulang tidak menulis file yang sudah sama. Konflik file diperiksa di
-semua tujuan sebelum penyalinan dimulai. Jika file paket berbeda, command gagal
-dengan daftar konflik; tinjau lalu gunakan `--force` untuk menggantinya. Opsi itu
-tidak menghapus file tambahan. Jalur provider atau file paket yang berupa
-symlink/junction, serta konflik tipe file/folder, tetap ditolak walaupun memakai
-`--force` agar penyalinan mengikuti tujuan proyek.
+Rerunning does not rewrite identical files. Conflicts are checked at every
+destination before copying begins. If a packaged file differs, the command fails
+with a conflict list; review it and use `--force` to replace those files. This option
+does not delete additional files. Provider paths or packaged file destinations
+that are symlinks/junctions, and file/directory type conflicts, are still rejected
+with `--force` so copying follows the intended project destination.
 
-Untuk memperbarui sumber skill, pasang ulang CLI dari GitHub, kemudian jalankan
-`comp-ile init --force` pada proyek yang ingin diperbarui. Gunakan ref GitHub
-`#tag-atau-commit` pada spesifikasi instalasi bila ingin memilih versi tertentu.
+To update the skill source, reinstall the CLI from GitHub, inspect the plan with
+`comp-ile init --dry-run`, then use `--force` if you intend to replace differing
+files. Version selection and preservation of local edits are explained in the
+[update guide](docs/versions-and-updates.md).
 
-Pada Windows, jika PowerShell memblokir wrapper `.ps1` npm, gunakan `npm.cmd`,
-`npx.cmd`, atau `comp-ile.cmd` untuk command yang bersangkutan.
+On Windows, if PowerShell blocks npm's `.ps1` wrappers, use `npm.cmd`, `npx.cmd`,
+or `comp-ile.cmd` for the corresponding command.
 
-## Format paket
+## Package format
 
-Format intinya mengikuti [Agent Skills](https://agentskills.io/specification):
-`SKILL.md` dengan frontmatter `name` dan `description`, lalu instruksi Markdown.
-Skill ini tidak memakai sintaks eksekusi khusus Claude, path komputer pembuat,
-atau nama tool provider dalam alur utamanya.
+The core format follows [Agent Skills](https://agentskills.io/specification):
+`SKILL.md` with `name` and `description` frontmatter, followed by Markdown instructions.
+The main workflow does not rely on Claude-specific execution syntax, the author's
+machine paths, or provider-specific tool names.
 
-`agents/openai.yaml` merupakan metadata opsional khusus lingkungan OpenAI.
-Alur skill tidak bergantung padanya; untuk provider lain, folder itu boleh
-ditinggalkan dalam paket atau dikecualikan. Tidak perlu menerjemahkan metadata
-tersebut menjadi instruksi untuk provider lain.
+`agents/openai.yaml` is optional metadata for OpenAI environments. The workflow
+does not depend on it; other providers can keep the folder in the package or
+exclude it. There is no need to convert this metadata into instructions for
+other providers.
 
-## Lokasi pemasangan
+## Installation locations
 
-Dokumentasi diperiksa pada 7 Oktober 2026. `~` berarti direktori pribadi pengguna,
-misalnya `C:\Users\nama-pengguna` di Windows. Tabel ini untuk aplikasi lokal;
-lingkungan cloud memiliki mekanisme discovery tersendiri.
+Documentation checked on October 7, 2026. `~` means the user's home directory,
+such as `C:\Users\username` on Windows. This table covers local applications;
+cloud environments have their own discovery mechanisms.
 
-| Aplikasi | Untuk satu proyek | Untuk semua proyek pengguna |
+| Application | For one project | For all user projects |
 | --- | --- | --- |
-| Codex | `<proyek>/.agents/skills/company-profile-website/` | `~/.agents/skills/company-profile-website/` |
-| Claude Code | `<proyek>/.claude/skills/company-profile-website/` | `~/.claude/skills/company-profile-website/` |
-| Antigravity 2.0 / IDE | `<proyek>/.agents/skills/company-profile-website/` | `~/.gemini/config/skills/company-profile-website/` |
-| Antigravity CLI | `<proyek>/.agents/skills/company-profile-website/` | `~/.gemini/antigravity-cli/skills/company-profile-website/` |
+| Codex | `<project>/.agents/skills/company-profile-website/` | `~/.agents/skills/company-profile-website/` |
+| Claude Code | `<project>/.claude/skills/company-profile-website/` | `~/.claude/skills/company-profile-website/` |
+| Antigravity 2.0 / IDE | `<project>/.agents/skills/company-profile-website/` | `~/.gemini/config/skills/company-profile-website/` |
+| Antigravity CLI | `<project>/.agents/skills/company-profile-website/` | `~/.gemini/antigravity-cli/skills/company-profile-website/` |
 
-Lokasi dan perilaku discovery mengikuti dokumentasi resmi
+Locations and discovery behavior follow the official documentation from
 [OpenAI](https://learn.chatgpt.com/docs/build-skills),
-[Claude Code](https://code.claude.com/docs/en/skills), dan
+[Claude Code](https://code.claude.com/docs/en/skills), and
 [Antigravity](https://antigravity.google/docs/skills).
-Antigravity juga mendokumentasikan beberapa path lama; gunakan path terbaru di
-tabel untuk pemasangan baru. Versi aplikasi yang lebih lama perlu diperiksa
-terhadap dokumentasi versinya.
+Antigravity also documents some legacy paths; use the current paths in the table
+for new installations. Check older application versions against their own documentation.
 
-CLI saat ini memasang skill dengan cakupan proyek pada Windows, macOS, dan Linux.
-Lokasi global pada tabel disediakan untuk pemasangan skill pribadi secara manual;
-instalasi global CLI dan pemasangan global skill adalah dua pilihan berbeda.
-Hindari pemasangan skill global dan proyek yang bernama sama jika tidak membutuhkan
-perilaku prioritas/duplikasi provider.
+The CLI currently installs project-scoped skills on Windows, macOS, and Linux.
+Global locations in the table are provided for manual personal skill installation;
+installing the CLI globally and installing a skill globally are different choices.
+Avoid installing the same skill globally and within a project unless you need
+the provider's precedence or duplication behavior.
 
-## Pemanggilan dan pengecekan
+## Invocation and checks
 
-| Aplikasi | Pemanggilan eksplisit |
+| Application | Explicit invocation |
 | --- | --- |
-| Codex | `Gunakan $company-profile-website untuk membuat website perusahaan saya.` |
-| Claude Code | `/company-profile-website` diikuti brief |
-| Antigravity 2.0 / CLI | `/company-profile-website` diikuti brief |
+| Codex | `Use $company-profile-website to create my company's website.` |
+| Claude Code | `/company-profile-website` followed by the brief |
+| Antigravity 2.0 / CLI | `/company-profile-website` followed by the brief |
 
-Cara pemanggilan mengikuti [panduan OpenAI](https://learn.chatgpt.com/docs/build-skills),
-[Claude Code](https://code.claude.com/docs/en/skills), dan
-[Antigravity](https://antigravity.google/docs/skills). Deskripsi skill juga dapat
-membantu pemilihan otomatis ketika permintaan pengguna relevan.
+Invocation follows the guides from
+[OpenAI](https://learn.chatgpt.com/docs/build-skills),
+[Claude Code](https://code.claude.com/docs/en/skills), and
+[Antigravity](https://antigravity.google/docs/skills).
+The skill description also helps automatic selection when the user's request is relevant.
 
-Sesudah menyalin, periksa daftar skill atau menu perintah di aplikasi tujuan.
-Jika belum terdeteksi, buka sesi baru atau reload sesuai aplikasi dan pastikan
-folder yang dibuka benar serta `SKILL.md` berada langsung dalam folder skill.
-Di Codex, dokumentasi menyarankan restart jika skill baru tidak muncul. Di
-Claude Code, `/reload-skills` dapat memuat direktori skill baru. Antigravity IDE
-menyediakan daftar aktif melalui menu Customizations.
+After copying, check the skill list or command menu in the target application.
+If the skill is not detected, start a new session or reload as appropriate, and
+ensure the correct folder is open and `SKILL.md` is directly inside the skill
+folder. Codex documentation suggests restarting if a new skill does not appear.
+In Claude Code, `/reload-skills` can load new skill directories. Antigravity IDE
+provides the active list through the Customizations menu.
 
-Coba dengan brief perusahaan dan bahan yang sama pada tiap aplikasi. Periksa
-apakah agent membaca referensi, menanyakan data penting yang kurang, mengikuti
-stack proyek, dan tidak membuat bukti bisnis palsu. Lanjutkan sampai implementasi
-serta QA bila tujuan uji adalah pembuatan website lengkap.
+Try the same company brief and materials in each application. Check whether the
+agent reads references, asks for important missing information, follows the
+project stack, and avoids invented business evidence. Continue through
+implementation and QA when testing complete website creation.
 
-Format paket yang sama mendukung portabilitas instruksi. Hasil dan kemampuan
-eksekusi tetap dipengaruhi model, tool browser/shell, izin, serta lingkungan
-masing-masing. Jika browser atau hosting tidak tersedia, agent harus melaporkan
-bagian yang belum diverifikasi atau belum dapat dijalankan.
+A shared package format supports portable instructions. Results and execution
+capabilities still depend on the model, browser/shell tools, permissions, and
+environment. If a browser or hosting is unavailable, the agent must report what
+remains unverified or cannot be performed.
 
-## Berbagi dan pembaruan
+## Sharing and updates
 
-Bagikan repository atau arsip yang memuat seluruh folder
-`company-profile-website/`. Pengguna memasangnya sesuai tabel. Packaging plugin
-dapat ditambahkan untuk distribusi melalui sistem plugin aplikasi tertentu;
-manifest plugin tiap aplikasi perlu diperlakukan terpisah dari inti skill.
+Share the repository or an archive containing the entire
+`company-profile-website/` folder. Users install it according to the table.
+Plugin packaging may be added for distribution through a specific application's
+plugin system; each application's manifest should be handled separately from
+the core skill.
 
-Repository ini menyediakan CLI dan sumber skill. Test memverifikasi penyalinan
-paket serta perilaku command dalam proyek sementara. Uji perilaku agent di dalam
-aplikasi Codex, Claude Code, dan Antigravity masih merupakan pemeriksaan terpisah.
+This repository provides the CLI and skill source. Tests verify package copying
+and command behavior in temporary projects. Agent behavior in Codex, Claude Code,
+and Antigravity requires separate checks.
+
+For your first practice project, follow the [tutorial](docs/tutorial.md).
+If commands or the skill are not detected, use
+[troubleshooting](docs/troubleshooting.md).

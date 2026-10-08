@@ -62,9 +62,9 @@ test('bare init installs complete packages for all providers in cwd', async (t) 
 
 test('relative target with spaces is created and Claude is selectable', async (t) => {
   const root = await workspace(t);
-  const result = run(root, 'init', 'nested/website perusahaan', '--provider', 'claude-code');
+  const result = run(root, 'init', 'nested/company website', '--provider', 'claude-code');
   assert.equal(result.status, 0, result.stderr);
-  const target = path.join(root, 'nested/website perusahaan');
+  const target = path.join(root, 'nested/company website');
   await verifyCopy(path.join(target, claude));
   assert.deepEqual(await readdir(target), ['.claude']);
 });
@@ -75,7 +75,7 @@ test('codex and antigravity share one installation with repeated providers', asy
   assert.equal(result.status, 0, result.stderr);
   await verifyCopy(path.join(root, shared));
   assert.deepEqual(await readdir(root), ['.agents']);
-  assert.equal(result.stdout.split('ditulis').length - 1, 1);
+  assert.equal(result.stdout.split('written').length - 1, 1);
 });
 
 test('explicit absolute --dir installs Antigravity without touching cwd', async (t) => {
@@ -160,7 +160,7 @@ test('directory occupying a packaged file is rejected even with force', async (t
   await mkdir(path.join(root, shared, 'SKILL.md'), { recursive: true });
   const result = run(root, 'init', '--force');
   assert.equal(result.status, 1);
-  assert.match(result.stderr, /bukan file biasa/);
+  assert.match(result.stderr, /not a regular file/);
   assert.deepEqual(await readdir(root), ['.agents']);
 });
 

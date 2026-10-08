@@ -1,62 +1,62 @@
-# Brief website company profile
+# Company profile website brief
 
-Isi bagian yang diketahui. Bagian lain boleh dikosongkan atau ditulis "belum ada".
-Tidak perlu membagikan password, API key, atau data pelanggan pribadi.
+Fill in the sections you know. Leave other sections blank or write "not available."
+Do not share passwords, API keys, or private customer data.
 
-## Perusahaan dan pembaca
+## Company and audience
 
-- Nama perusahaan/merek:
-- Bidang usaha dan penjelasan singkat:
-- Lokasi atau area layanan:
-- Calon pelanggan/pembaca utama:
-- Bahasa website:
-- Tujuan utama website:
-- Tindakan utama pengunjung (misalnya konsultasi atau melihat proyek):
+- Company/brand name:
+- Industry and short description:
+- Location or service area:
+- Main customers/audience:
+- Website language:
+- Main website goal:
+- Visitor's main action (for example, a consultation or viewing projects):
 
-## Layanan dan pembeda
+## Services and differentiators
 
-Untuk setiap layanan utama:
+For each core service:
 
-- Nama layanan:
-- Kebutuhan pelanggan yang ditangani:
-- Lingkup pekerjaan:
-- Hasil yang diterima pelanggan:
+- Service name:
+- Customer need addressed:
+- Scope of work:
+- Client deliverables:
 
-Pembeda perusahaan dan bukti pendukungnya:
+Company differentiators and supporting evidence:
 
-## Portofolio dan kredibilitas
+## Portfolio and credibility
 
-Untuk setiap proyek yang boleh ditampilkan:
+For each project that may be shown:
 
-- Nama atau kategori proyek:
-- Klien (boleh anonim):
-- Kebutuhan klien:
-- Peran perusahaan dan lingkup pekerjaan:
-- Solusi/pekerjaan yang dilakukan:
-- Hasil yang terkonfirmasi:
-- Dokumentasi tersedia:
-- Izin publikasi atau batas informasi:
+- Project name or category:
+- Client (may be anonymous):
+- Client need:
+- Company's role and scope:
+- Solution/work completed:
+- Confirmed results:
+- Available documentation:
+- Publication permissions or information limits:
 
-Testimoni, sertifikasi, pengalaman tim, atau bukti lain yang tersedia:
+Available testimonials, certifications, team experience, or other evidence:
 
-## Identitas visual dan kontak
+## Visual identity and contacts
 
-- Logo dan pedoman merek:
-- Warna/font yang harus digunakan:
-- Foto/ilustrasi yang tersedia dan hak penggunaannya:
-- Referensi desain dan alasan menyukainya:
-- Email bisnis:
-- Telepon/WhatsApp bisnis dengan kode negara:
-- Alamat yang boleh dipublikasikan:
-- Media sosial resmi:
+- Logo and brand guidelines:
+- Required colors/fonts:
+- Available photos/illustrations and usage rights:
+- Design references and why you like them:
+- Business email:
+- Business phone/WhatsApp with country code:
+- Address that may be published:
+- Official social media:
 
-## Teknis dan cakupan
+## Technical requirements and scope
 
-- Situs lama atau repository yang perlu digunakan:
-- Stack/platform yang diminta (boleh belum ditentukan):
-- Satu halaman atau beberapa halaman (boleh belum ditentukan):
-- Kebutuhan memperbarui konten/CMS:
-- Integrasi yang diminta (formulir, peta, analytics, atau lainnya):
-- Domain/hosting yang sudah tersedia:
-- Hasil yang diinginkan (konten, desain, kode, preview, atau publikasi):
-- Halaman/fitur yang wajib ada dan batas lainnya:
+- Existing site or repository to use:
+- Requested stack/platform (may be undecided):
+- One page or multiple pages (may be undecided):
+- Content updating/CMS needs:
+- Requested integrations (forms, maps, analytics, or others):
+- Available domain/hosting:
+- Desired deliverable (content, design, code, preview, or publication):
+- Required pages/features and other constraints:

@@ -1,66 +1,66 @@
-# Spesifikasi dan kelanjutan proyek
+# Project specifications and continuation
 
-Gunakan hanya bagian yang sesuai kebutuhan website company profile. Dokumen
-dibuat di proyek website pengguna; folder skill berisi panduan yang dapat dipakai
-ulang, bukan data perusahaan tertentu. Ikuti lokasi dokumen yang sudah ada.
+Use only the sections that fit the company profile website's needs. Create
+documents in the user's website project; the skill folder contains reusable
+guidance, not company-specific data. Follow existing document locations.
 
-## Spesifikasi singkat
+## Short specification
 
-Gunakan ketika website baru atau cakupan kompleks membutuhkan acuan yang belum
-tersedia, atau pengguna meminta spesifikasi. Jika brief atau dokumen yang ada
-sudah menjelaskan keputusan dan hasil yang diharapkan, jadikan itu acuan langsung.
-Revisi kecil cukup memakai permintaan pengguna dan konteks yang relevan.
+Use this when a new website or complex scope needs a reference that is not yet
+available, or when the user requests a specification. If the existing brief or
+documents already explain the decisions and expected results, use them directly.
+Small revisions can rely on the user's request and relevant context.
 
-Untuk spesifikasi baru, gunakan lokasi seperti `docs/company-profile/spec.md`
-bila proyek belum memiliki konvensi. Isi dari percakapan dan bahan yang tersedia:
+For a new specification, use a location such as `docs/company-profile/spec.md`
+if the project has no convention. Fill it from the conversation and available materials:
 
-- **Tujuan dan pembaca:** kebutuhan bisnis serta tindakan utama pengunjung.
-- **Cakupan:** halaman atau bagian yang dibuat/diubah, isi utamanya, dan fitur yang
-  diminta. Catat hal di luar cakupan hanya jika perlu menjelaskan batas pekerjaan.
-- **Keputusan:** bahasa, struktur, arah visual, teknologi, dan jalur kontak sejauh
-  relevan. Bedakan keputusan pengguna dari asumsi yang masih terbuka.
-- **Kriteria penerimaan:** perilaku atau informasi yang dapat diperiksa. Misalnya,
-  pengunjung dapat menemukan layanan utama, memahami lingkupnya, melihat bukti
-  yang tersedia, dan membuka kanal kontak yang benar pada tampilan mobile.
-- **Bahan dan kekurangan:** rujukan konten/aset, status fakta, serta data atau
-  integrasi yang masih dibutuhkan. Jelaskan mana yang menghambat fitur wajib.
+- **Goals and audience:** the business need and visitor's main action.
+- **Scope:** pages or sections to create or change, their main content, and
+  requested features. Record exclusions only when needed to explain the limits.
+- **Decisions:** language, structure, visual direction, technology, and contact
+  paths where relevant. Distinguish user decisions from open assumptions.
+- **Acceptance criteria:** observable behavior or information. For example,
+  visitors can find core services, understand their scope, see available
+  evidence, and open the correct contact channel on mobile.
+- **Materials and gaps:** content and asset references, fact status, and missing
+  data or integrations. Explain which gaps block required features.
 
-Sesuaikan panjang dengan pekerjaan. Setiap kebutuhan material harus memiliki
-hasil yang dapat diperiksa; jangan menciptakan fitur agar spesifikasi tampak lengkap.
-Perbarui bagian yang berubah setelah keputusan pengguna, tanpa mengulang
-wawancara ketika informasi sudah cukup. Instruksi pengguna yang lebih baru
-mengubah acuan lama. Permintaan membuat website mengizinkan penyusunan acuan
-yang diperlukan; persetujuan tiap tahap bukan syarat otomatis.
+Match the length to the work. Every material requirement needs a checkable
+outcome; do not invent features to make the specification appear complete.
+Update affected sections after user decisions without repeating interviews when
+the information is sufficient. Newer user instructions supersede the old reference.
+A website creation request authorizes preparing the reference needed for the work;
+approval at every stage is not an automatic requirement.
 
-Spesifikasi cukup ketika lingkup, keputusan yang diperlukan, dan kriteria
-penerimaan dapat memandu implementasi serta QA. Rujuk bahan yang sudah ada
-melalui path relatif proyek atau URL; hindari menyalin seluruh dokumen sumber.
+The specification is sufficient when its scope, necessary decisions, and acceptance
+criteria can guide implementation and QA. Link existing materials using project
+relative paths or URLs; avoid copying entire source documents.
 
-## Catatan kelanjutan
+## Continuation notes
 
-Gunakan ketika pekerjaan panjang membutuhkan ingatan yang tersimpan, akan
-dilanjutkan pada sesi berikutnya, atau dipindahkan ke provider lain. Untuk tugas
-singkat yang selesai, ringkasan akhir cukup. Catatan mencatat keadaan saat ini;
-tidak menambah tujuan baru atau menggantikan pekerjaan implementasi yang diminta.
+Use these when lengthy work needs persistent context, will continue in another
+session, or will move to another provider. A final summary is sufficient for a
+short, completed task. Notes record the current state; they do not add goals
+or replace the requested implementation work.
 
-Perbarui catatan proyek yang sudah ada. Bila belum ada konvensi, gunakan lokasi
-seperti `docs/company-profile/handoff.md`. Catat seperlunya:
+Update existing project notes. If no convention exists, use a location such as
+`docs/company-profile/handoff.md`. Record only what is needed:
 
-- Tujuan aktif, batas pekerjaan, dan rujukan brief/spesifikasi.
-- Keputusan terbaru beserta asumsi atau pertanyaan yang masih terbuka.
-- Bagian yang selesai, sedang dikerjakan, atau belum selesai; tunjukkan file,
-  halaman, dan aset yang relevan melalui path relatif proyek.
-- Cara menjalankan/preview serta pemeriksaan yang benar-benar dilakukan dan
-  hasilnya. Bedakan pemeriksaan gagal dari yang belum dijalankan.
-- Langkah berikutnya dan data, akses, atau integrasi yang diperlukan untuknya.
+- The active goal, scope limits, and brief/specification references.
+- Recent decisions and any open assumptions or questions.
+- Completed, active, and unfinished work; point to relevant files, pages, and
+  assets using project relative paths.
+- Run/preview instructions, checks actually performed, and their results.
+  Distinguish failed checks from checks that have not been run.
+- Next steps and the data, access, or integrations they require.
 
-Simpan fakta proyek dan rujukan yang berguna lintas provider. Nama tool sesi,
-ID sementara, serta path mesin yang tidak berlaku di lingkungan berikutnya tidak
-menjadi ketergantungan. Rahasia seperti password, API key, dan data pelanggan
-pribadi tidak dimasukkan ke catatan; rujuk lokasi konfigurasi tanpa nilainya.
+Keep project facts and references useful across providers. Session tool names,
+temporary IDs, and machine paths unavailable in the next environment must not
+become dependencies. Do not include passwords, API keys, or private customer data
+in notes; reference configuration locations without their values.
 
-Catatan cukup ketika agent berikutnya dapat menemukan acuan, memahami status
-dan batasnya, serta memilih langkah berikutnya tanpa menebak keputusan lama.
-Saat melanjutkan, baca rujukan yang relevan dan periksa keadaan kode saat ini;
-selesaikan perbedaan dengan instruksi pengguna terbaru. Gunakan acuan yang
-sama untuk QA dan perbarui status setelah pekerjaan berubah.
+Notes are sufficient when the next agent can find the reference, understand the
+status and limits, and choose a next step without guessing previous decisions.
+When resuming, read relevant references and inspect the current code; resolve
+discrepancies using the latest user instructions. Use the same reference for QA
+and update the status as work changes.

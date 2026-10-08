@@ -32,7 +32,7 @@ async function resolveProject(directory) {
     ancestor = path.dirname(ancestor);
   }
   if (!(await stat(ancestor)).isDirectory()) {
-    throw new Error(`Tujuan harus berupa direktori: ${ancestor}`);
+    throw new Error(`The destination must be a directory: ${ancestor}`);
   }
   return path.join(await realpath(ancestor), ...pending);
 }
@@ -48,7 +48,7 @@ async function collectFiles(directory, relative = '') {
     } else if (entry.isFile()) {
       files.push({ relativePath: entryPath, sourcePath: path.join(directory, entryPath) });
     } else {
-      throw new Error(`Paket skill berisi tipe file yang tidak didukung: ${entryPath}`);
+      throw new Error(`The skill package contains an unsupported file type: ${entryPath}`);
     }
   }
   return files;
@@ -60,22 +60,22 @@ async function checkDirectories(projectRoot, relativeDirectory) {
     current = path.join(current, part);
     const info = await inspect(current);
     if (info?.isSymbolicLink()) {
-      throw new Error(`Folder tujuan berupa symlink/junction: ${current}. Gunakan folder biasa.`);
+      throw new Error(`The destination folder is a symlink/junction: ${current}. Use an ordinary directory.`);
     }
     if (info && !info.isDirectory()) {
-      throw new Error(`Jalur folder tujuan sudah digunakan oleh file: ${current}`);
+      throw new Error(`A file already occupies the destination directory path: ${current}`);
     }
   }
 }
 
 export async function installSkill({ directory = '.', providers = providerNames, force = false, dryRun = false }) {
   if (providers.length === 0 || providers.some((provider) => !Object.hasOwn(PROVIDERS, provider))) {
-    throw new Error('Pilih setidaknya satu provider yang didukung.');
+    throw new Error('Choose at least one supported provider.');
   }
   const projectRoot = await resolveProject(directory);
   const sourceFiles = await collectFiles(SOURCE);
   if (!sourceFiles.some((file) => file.relativePath === 'SKILL.md')) {
-    throw new Error('Paket tidak lengkap: SKILL.md tidak ditemukan.');
+    throw new Error('The package is incomplete: SKILL.md was not found.');
   }
 
   const targetDirectories = [...new Set(providers.map((provider) => PROVIDERS[provider]))];
@@ -96,7 +96,7 @@ export async function installSkill({ directory = '.', providers = providerNames,
       let action = 'create';
       if (info) {
         if (info.isSymbolicLink() || !info.isFile()) {
-          throw new Error(`Tujuan file bukan file biasa: ${destination}`);
+          throw new Error(`The destination is not a regular file: ${destination}`);
         }
         const [sourceData, destinationData] = await Promise.all([
           readFile(sourceFile.sourcePath), readFile(destination),
@@ -110,7 +110,7 @@ export async function installSkill({ directory = '.', providers = providerNames,
   }
 
   if (conflicts.length > 0) {
-    throw new Error(`File tujuan berbeda; belum ada file yang ditulis:\n  ${conflicts.join('\n  ')}\nTinjau perubahan, lalu gunakan --force untuk memperbarui file paket.`);
+    throw new Error(`Destination files differ; no files have been written:\n  ${conflicts.join('\n  ')}\nReview the changes, then use --force to update packaged files.`);
   }
 
   if (!dryRun) {

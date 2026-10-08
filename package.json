@@ -1,7 +1,7 @@
 {
   "name": "comp-ile",
   "version": "0.1.0",
-  "description": "CLI untuk memasang skill website company profile ke Codex, Claude Code, dan Antigravity.",
+  "description": "CLI for installing the company profile website skill in Codex, Claude Code, and Antigravity.",
   "private": true,
   "type": "module",
   "bin": {
@@ -11,7 +11,10 @@
     "bin/",
     "src/",
     "skills/",
-    "INSTALL.md"
+    "docs/",
+    "examples/",
+    "INSTALL.md",
+    "CHANGELOG.md"
   ],
   "engines": {
     "node": ">=20"

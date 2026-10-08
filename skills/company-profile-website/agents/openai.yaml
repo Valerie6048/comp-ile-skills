@@ -1,4 +1,4 @@
 interface:
   display_name: "Company Profile Website"
-  short_description: "Buat website company profile dari brief hingga QA"
-  default_prompt: "Gunakan $company-profile-website untuk membuat website company profile sesuai data bisnis, identitas merek, dan tujuan pengunjung."
+  short_description: "Build company profile websites from brief to QA"
+  default_prompt: "Use $company-profile-website to create a company profile website based on business information, brand identity, and visitor goals."
