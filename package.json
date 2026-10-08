@@ -1,0 +1,26 @@
+{
+  "name": "comp-ile",
+  "version": "0.1.0",
+  "description": "CLI untuk memasang skill website company profile ke Codex, Claude Code, dan Antigravity.",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "comp-ile": "bin/comp-ile.js"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "skills/",
+    "INSTALL.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Valerie6048/comp-ile-skills.git"
+  }
+}
