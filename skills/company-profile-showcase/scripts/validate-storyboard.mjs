@@ -1,6 +1,5 @@
-import { readFile } from 'node:fs/promises';
-import path from 'node:path';
-import { pathToFileURL } from 'node:url';
+import { readFile, realpath } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
 
 const FORMATS = {
   landscape: [1920, 1080],
@@ -71,7 +70,7 @@ export function validateStoryboard(plan) {
   };
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
+if (process.argv[1] && await realpath(process.argv[1]) === await realpath(fileURLToPath(import.meta.url))) {
   try {
     const args = process.argv.slice(2);
     if (args.length !== 1 || ['--help', '-h'].includes(args[0])) {

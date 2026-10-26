@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { readFile } from 'node:fs/promises';
+import { mkdtemp, readFile, rm, symlink } from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { validateStoryboard } from '../skills/company-profile-showcase/scripts/validate-storyboard.mjs';
@@ -84,4 +86,20 @@ test('storyboard CLI reads a file, emits JSON, and reports missing input with a 
   const missing = spawnSync(process.execPath, [helper], { encoding: 'utf8' });
   assert.equal(missing.status, 1);
   assert.match(missing.stdout, /Usage:/);
+});
+
+test('storyboard CLI runs when invoked through a symlinked directory', { skip: process.platform === 'win32' }, async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), 'comp-ile-storyboard-'));
+  try {
+    const alias = path.join(root, 'showcase-alias');
+    await symlink(fileURLToPath(new URL('../skills/company-profile-showcase/', import.meta.url)), alias, 'dir');
+    const result = spawnSync(process.execPath,
+      [path.join(alias, 'scripts/validate-storyboard.mjs'), path.join(alias, 'assets/storyboard.example.json')],
+      { encoding: 'utf8' });
+    assert.ifError(result.error);
+    assert.equal(result.status, 0, result.stderr);
+    assert.equal(JSON.parse(result.stdout).total_frames, 600);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
 });
