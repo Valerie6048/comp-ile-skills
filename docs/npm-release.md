@@ -16,7 +16,7 @@ a package. GitHub source installation is an alternative distribution path.
   The copyright notice uses the repository owner's public handle, `Valerie6048`.
 - Author (optional): add a public display name and optional public URL to the
   `author` field if desired. An email address is not required.
-- Version: `0.2.0` is the current source version. Check that the chosen
+- Version: `0.2.1` is the current source version. Check that the chosen
   name/version has not already been published. Every release needs a new version.
 
 ## Validate locally
@@ -63,7 +63,7 @@ For the scoped package `@niinya/comp-ile`, verify and install with:
 
 ```sh
 npm view @niinya/comp-ile version
-npx @niinya/comp-ile@0.2.0 init ./website --dry-run
+npx @niinya/comp-ile@0.2.1 init ./website --dry-run
 npm install -g @niinya/comp-ile
 comp-ile init
 ```
@@ -71,7 +71,7 @@ comp-ile init
 Alternatively, explicitly select the executable with:
 
 ```sh
-npx --package=@niinya/comp-ile@0.2.0 comp-ile init ./website --dry-run
+npx --package=@niinya/comp-ile@0.2.1 comp-ile init ./website --dry-run
 ```
 
 The installation guides show registry commands. Keep their version examples

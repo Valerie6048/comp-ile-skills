@@ -15,7 +15,7 @@ project copy versions in a separate manifest or update them automatically.
 Install a registry version for a reproducible release:
 
 ```sh
-npm install -g @niinya/comp-ile@0.2.0
+npm install -g @niinya/comp-ile@0.2.1
 ```
 
 Use `@niinya/comp-ile@latest` for the latest registry release. As an alternative,

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.1 - 2026-10-26
+
+- Fix storyboard helper CLI detection through symlinked paths on macOS.
+- Add a regression test for symlinked helper invocation.
+
 ## 0.2.0 - 2026-10-26
 
 - Company profile showcase V1 skill for authentic website launch/current-site

@@ -50,7 +50,7 @@ test('help and version work without installing anything', async (t) => {
   }
   const result = run(root, '--version');
   assert.equal(result.status, 0, result.stderr);
-  assert.equal(result.stdout.trim(), '0.2.0');
+  assert.equal(result.stdout.trim(), '0.2.1');
   assert.deepEqual(await readdir(root), []);
 });
 
