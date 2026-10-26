@@ -1,7 +1,26 @@
 # Changelog
 
-## Unreleased
+## 0.2.0 - 2026-10-26
 
+- Company profile showcase V1 skill for authentic website launch/current-site
+  videos, optional music, storyboard, poster/caption, reproduction, and media QA.
+- Dependency-free storyboard timing validator, helper/installer tests, and
+  `--skill company-profile-showcase` selection, also included in `--skill all`.
+- Full showcase implementation roadmap covering narrative modes, adaptations,
+  narration/subtitles, scene revisions, maintenance, and optional distribution.
+- Website inquiries skill covering email/antispam account onboarding, sender
+  verification, form validation and abuse controls, durable lead storage,
+  notifications, optional acknowledgments, failure recovery, and maintenance.
+- `--skill website-inquiries` selection and inclusion in `--skill all`.
+- Website analytics skill covering GA4 and Microsoft Clarity onboarding from
+  account creation, company ownership and maintainer access, tracking plans,
+  consent/masking, installation, verification, repairs, and maintenance records.
+- CLI skill selection with `--skill website-analytics`, comma-separated or
+  repeated selections, and `--skill all`; the default remains company profile.
+- Conflict checks across all selected skills and providers before copying.
+- Public npm registry configuration, package discovery metadata, a test gate
+  before publication, and a maintainer release guide.
+- MIT license for the CLI, skill, and included documentation.
 - Demo company tutorial covering installation through website review.
 - Troubleshooting guide for the CLI and skill discovery in agent applications.
 - Guide to versions, project updates, and handling local edits.

@@ -23,7 +23,7 @@ follows the [npm folder documentation](https://docs.npmjs.com/cli/v11/configurin
 As an option without global installation:
 
 ```sh
-npx --yes --package=github:Valerie6048/comp-ile-skills comp-ile --help
+npx @niinya/comp-ile --help
 ```
 
 ## PowerShell blocks npm.ps1, npx.ps1, or comp-ile.ps1
@@ -31,7 +31,7 @@ npx --yes --package=github:Valerie6048/comp-ile-skills comp-ile --help
 Use the corresponding Windows `.cmd` wrapper:
 
 ```powershell
-npm.cmd install -g github:Valerie6048/comp-ile-skills
+npm.cmd install -g @niinya/comp-ile
 comp-ile.cmd init ./website
 ```
 
@@ -83,6 +83,13 @@ Ensure the application has opened the destination project and these files exist:
 | --- | --- |
 | Codex / Antigravity | `.agents/skills/company-profile-website/SKILL.md` |
 | Claude Code | `.claude/skills/company-profile-website/SKILL.md` |
+
+For analytics, replace `company-profile-website` with `website-analytics` and
+install it with `comp-ile init --skill website-analytics`. For inquiry forms, use
+`website-inquiries` and `comp-ile init --skill website-inquiries`. The default
+`init` installs only the company profile skill; `--skill all` installs all four.
+For video production, use `company-profile-showcase` and
+`comp-ile init --skill company-profile-showcase`.
 
 Codex detects changes; restart if the skill still does not appear. Claude Code
 provides `/reload-skills` for new skill directories. Antigravity IDE lists skills

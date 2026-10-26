@@ -15,18 +15,17 @@ Open a terminal and check:
 ```sh
 node --version
 npm --version
-git --version
 ```
 
-The CLI requires Node.js 20 or later. npm and Git are used for installation from
-GitHub. Your chosen agent application must be able to read and edit the project;
+The CLI requires Node.js 20 or later and npm. Git is only required for optional
+GitHub source installation. Your chosen agent application must be able to read and edit the project;
 a preview/browser helps with visual checks. If a command fails, see
 [troubleshooting](troubleshooting.md).
 
 ## 2. Install the CLI and skill
 
 ```sh
-npm install -g github:Valerie6048/comp-ile-skills
+npm install -g @niinya/comp-ile
 comp-ile --version
 comp-ile init ./website-demo
 ```

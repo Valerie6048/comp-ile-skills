@@ -1,0 +1,3 @@
+interface:
+  display_name: "Website Analytics"
+  short_description: "Set up, verify, and maintain GA4 and Microsoft Clarity"

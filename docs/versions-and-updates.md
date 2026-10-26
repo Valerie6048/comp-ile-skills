@@ -12,7 +12,14 @@ project copy versions in a separate manifest or update them automatically.
 
 ## Choose a source
 
-Installation without a ref fetches the repository's default branch:
+Install a registry version for a reproducible release:
+
+```sh
+npm install -g @niinya/comp-ile@0.2.0
+```
+
+Use `@niinya/comp-ile@latest` for the latest registry release. As an alternative,
+GitHub installation without a ref fetches the repository's default branch:
 
 ```sh
 npm install -g github:Valerie6048/comp-ile-skills
@@ -32,7 +39,7 @@ Refs follow [npm's GitHub installation syntax](https://docs.npmjs.com/cli/v11/co
 
 1. Save website changes and any skill edits you want to retain. If using Git,
    review tracked changes; also save untracked files before updating.
-2. Reinstall the CLI from your chosen GitHub ref, then check `comp-ile --version`.
+2. Reinstall the CLI from your chosen npm version or GitHub ref, then check `comp-ile --version`.
    Two commits may carry the same version if metadata has not been incremented;
    keep the chosen ref if you need reproducibility.
 3. In the destination project, inspect the plan:
@@ -50,8 +57,9 @@ Refs follow [npm's GitHub installation syntax](https://docs.npmjs.com/cli/v11/co
    comp-ile init --force
    ```
 
-For a subset of providers, use the same `--provider` option when inspecting
-and writing. The destination directory must also match. Review the changes
+For a subset of providers or skills, use the same `--provider` and `--skill`
+options when inspecting and writing. For example, use `--skill website-analytics`
+in both commands to update only analytics. The destination directory must also match. Review the changes
 afterward and reload the agent if the updated content is not detected.
 
 ## What force replaces
@@ -80,6 +88,7 @@ then review documentation and skill contents. Agent guidance changes also need
 relevant website scenarios; CLI tests verify installation, not model decisions.
 
 GitHub tags and registry packages are separate distribution paths. This
-repository currently distributes through GitHub, with `private: true` preventing
-accidental registry publication. This guide does not create tags or publish
-a package to npm.
+repository supports npm releases and GitHub source installation.
+See the [npm release guide](npm-release.md) for account, name,
+license, validation, and publishing steps. This guide does not create tags or
+publish a package to npm.

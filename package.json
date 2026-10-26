@@ -1,8 +1,29 @@
 {
-  "name": "comp-ile",
-  "version": "0.1.0",
-  "description": "CLI for installing the company profile website skill in Codex, Claude Code, and Antigravity.",
-  "private": true,
+  "name": "@niinya/comp-ile",
+  "version": "0.2.0",
+  "license": "MIT",
+  "description": "CLI for installing company website, analytics, inquiry form, and showcase video skills in Codex, Claude Code, and Antigravity.",
+  "keywords": [
+    "agent-skills",
+    "company-profile",
+    "website-analytics",
+    "website-inquiries",
+    "company-profile-showcase",
+    "ga4",
+    "microsoft-clarity",
+    "website",
+    "codex",
+    "claude-code",
+    "antigravity"
+  ],
+  "homepage": "https://github.com/Valerie6048/comp-ile-skills#readme",
+  "bugs": {
+    "url": "https://github.com/Valerie6048/comp-ile-skills/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "type": "module",
   "bin": {
     "comp-ile": "bin/comp-ile.js"
@@ -20,7 +41,8 @@
     "node": ">=20"
   },
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "prepublishOnly": "npm test"
   },
   "repository": {
     "type": "git",

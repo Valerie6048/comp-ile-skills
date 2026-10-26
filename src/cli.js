@@ -1,12 +1,15 @@
 import { readFile } from 'node:fs/promises';
-import { installSkill, providerNames } from './installer.js';
+import { installSkill, providerNames, skillNames } from './installer.js';
 
-const HELP = `comp-ile - company profile website skill installer
+const HELP = `comp-ile - website skills installer
 
 Usage:
   comp-ile init [directory] [options]
 
 Options:
+  --skill <name>     Skill name, comma-separated names, or all; repeatable.
+                     Available: ${skillNames.join(', ')}.
+                     Default: company-profile-website.
   --provider <name>  all (default), codex, claude-code, antigravity
                      Separate with commas or repeat the option for multiple providers.
   --dir <directory> Destination directory; defaults to the current working directory.
@@ -18,6 +21,10 @@ Options:
 Examples:
   comp-ile init
   comp-ile init ./website --provider claude-code
+  comp-ile init ./website --skill website-analytics
+  comp-ile init ./website --skill website-inquiries
+  comp-ile init ./website --skill company-profile-showcase
+  comp-ile init ./website --skill all --provider codex
   comp-ile init --dir "./company website" --provider codex,antigravity
   comp-ile init --dry-run
 `;
@@ -62,7 +69,7 @@ export function parseArgs(args) {
       options.dryRun = true;
       continue;
     }
-    if (arg === '--provider' || arg === '--dir' || arg.startsWith('--provider=') || arg.startsWith('--dir=')) {
+    if (['--provider', '--skill', '--dir'].includes(arg) || ['--provider=', '--skill=', '--dir='].some((flag) => arg.startsWith(flag))) {
       const equalIndex = arg.indexOf('=');
       const flag = equalIndex === -1 ? arg : arg.slice(0, equalIndex);
       const value = equalIndex === -1 ? args[++index] : arg.slice(equalIndex + 1);
@@ -71,7 +78,7 @@ export function parseArgs(args) {
       }
       if (flag === '--dir') {
         setDirectory(value);
-      } else {
+      } else if (flag === '--provider') {
         const names = value.split(',').map((name) => name.trim());
         for (const name of names) {
           if (name !== 'all' && !providerNames.includes(name)) {
@@ -79,6 +86,15 @@ export function parseArgs(args) {
           }
         }
         options.providers.push(...names);
+      } else {
+        const names = value.split(',').map((name) => name.trim());
+        for (const name of names) {
+          if (name !== 'all' && !skillNames.includes(name)) {
+            throw new Error(`Unknown skill: ${name || '(empty)'}. Choose all, ${skillNames.join(', ')}.`);
+          }
+        }
+        options.skills ??= [];
+        options.skills.push(...names);
       }
       continue;
     }
@@ -90,6 +106,9 @@ export function parseArgs(args) {
     options.providers = [...providerNames];
   }
   options.providers = [...new Set(options.providers)];
+  if (options.skills) {
+    options.skills = options.skills.includes('all') ? [...skillNames] : [...new Set(options.skills)];
+  }
   return options;
 }
 
@@ -114,5 +133,5 @@ export async function runCLI(args) {
   }
   console.log(options.dryRun
     ? 'Dry run complete; no files were written.'
-    : 'The skill is ready for discovery by the target application. Open or reload the session if it does not appear.');
+    : 'The selected skills are ready for discovery by the target application. Open or reload the session if needed.');
 }

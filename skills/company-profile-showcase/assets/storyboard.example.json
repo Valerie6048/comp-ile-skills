@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "project_name": "Fictional example company website",
+  "format": "landscape",
+  "fps": 30,
+  "duration_seconds": 20,
+  "audio_mode": "none",
+  "scenes": [
+    {
+      "id": "brand-hook",
+      "duration_seconds": 3,
+      "visual": "Use the actual company logo and a recognizable homepage detail.",
+      "copy": "Meet the company",
+      "settled_seconds": 2
+    },
+    {
+      "id": "homepage",
+      "duration_seconds": 4,
+      "visual": "Reveal the actual homepage with its brand typography and imagery.",
+      "copy": "A clearer first impression",
+      "settled_seconds": 2.5
+    },
+    {
+      "id": "services",
+      "duration_seconds": 5,
+      "visual": "Show supported services using their actual page content.",
+      "copy": "Explore our services",
+      "settled_seconds": 3
+    },
+    {
+      "id": "visitor-path",
+      "duration_seconds": 5,
+      "visual": "Demonstrate a real safe navigation or portfolio interaction.",
+      "copy": "Find what you need",
+      "settled_seconds": 3
+    },
+    {
+      "id": "contact",
+      "duration_seconds": 3,
+      "visual": "Close on a settled brand frame and an approved contact action.",
+      "copy": "Start a conversation",
+      "settled_seconds": 2
+    }
+  ]
+}

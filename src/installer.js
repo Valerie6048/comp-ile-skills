@@ -3,8 +3,9 @@ import { copyFile, lstat, mkdir, readFile, readdir, realpath, stat } from 'node:
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const SKILL_NAME = 'company-profile-website';
-const SOURCE = fileURLToPath(new URL(`../skills/${SKILL_NAME}/`, import.meta.url));
+export const skillNames = [
+  'company-profile-website', 'website-analytics', 'website-inquiries', 'company-profile-showcase',
+];
 const PROVIDERS = {
   codex: '.agents/skills',
   'claude-code': '.claude/skills',
@@ -68,45 +69,54 @@ async function checkDirectories(projectRoot, relativeDirectory) {
   }
 }
 
-export async function installSkill({ directory = '.', providers = providerNames, force = false, dryRun = false }) {
+export async function installSkill({ directory = '.', providers = providerNames, skills = ['company-profile-website'], force = false, dryRun = false }) {
   if (providers.length === 0 || providers.some((provider) => !Object.hasOwn(PROVIDERS, provider))) {
     throw new Error('Choose at least one supported provider.');
   }
+  if (skills.length === 0 || skills.some((skill) => !skillNames.includes(skill))) {
+    throw new Error(`Choose at least one supported skill: ${skillNames.join(', ')}.`);
+  }
   const projectRoot = await resolveProject(directory);
-  const sourceFiles = await collectFiles(SOURCE);
-  if (!sourceFiles.some((file) => file.relativePath === 'SKILL.md')) {
-    throw new Error('The package is incomplete: SKILL.md was not found.');
+  const packages = [];
+  for (const name of new Set(skills)) {
+    const source = fileURLToPath(new URL(`../skills/${name}/`, import.meta.url));
+    const files = await collectFiles(source);
+    if (!files.some((file) => file.relativePath === 'SKILL.md')) {
+      throw new Error(`The package is incomplete: ${name}/SKILL.md was not found.`);
+    }
+    packages.push({ name, files });
   }
 
   const targetDirectories = [...new Set(providers.map((provider) => PROVIDERS[provider]))];
   const targets = [];
   const conflicts = [];
 
-  // Preflight every selected provider before writing any files, so a known
-  // conflict in one provider does not leave a new installation in another.
+  // Preflight every selected skill and provider before writing any files.
   for (const providerDirectory of targetDirectories) {
-    const relativePath = path.join(providerDirectory, SKILL_NAME);
-    const target = { relativePath, files: [] };
-    await checkDirectories(projectRoot, relativePath);
-    for (const sourceFile of sourceFiles) {
-      const destinationRelative = path.join(relativePath, sourceFile.relativePath);
-      await checkDirectories(projectRoot, path.dirname(destinationRelative));
-      const destination = path.join(projectRoot, destinationRelative);
-      const info = await inspect(destination);
-      let action = 'create';
-      if (info) {
-        if (info.isSymbolicLink() || !info.isFile()) {
-          throw new Error(`The destination is not a regular file: ${destination}`);
+    for (const skill of packages) {
+      const relativePath = path.join(providerDirectory, skill.name);
+      const target = { relativePath, files: [] };
+      await checkDirectories(projectRoot, relativePath);
+      for (const sourceFile of skill.files) {
+        const destinationRelative = path.join(relativePath, sourceFile.relativePath);
+        await checkDirectories(projectRoot, path.dirname(destinationRelative));
+        const destination = path.join(projectRoot, destinationRelative);
+        const info = await inspect(destination);
+        let action = 'create';
+        if (info) {
+          if (info.isSymbolicLink() || !info.isFile()) {
+            throw new Error(`The destination is not a regular file: ${destination}`);
+          }
+          const [sourceData, destinationData] = await Promise.all([
+            readFile(sourceFile.sourcePath), readFile(destination),
+          ]);
+          action = sourceData.equals(destinationData) ? 'unchanged' : 'update';
+          if (action === 'update' && !force) conflicts.push(destinationRelative);
         }
-        const [sourceData, destinationData] = await Promise.all([
-          readFile(sourceFile.sourcePath), readFile(destination),
-        ]);
-        action = sourceData.equals(destinationData) ? 'unchanged' : 'update';
-        if (action === 'update' && !force) conflicts.push(destinationRelative);
+        target.files.push({ ...sourceFile, destination, action });
       }
-      target.files.push({ ...sourceFile, destination, action });
+      targets.push(target);
     }
-    targets.push(target);
   }
 
   if (conflicts.length > 0) {

@@ -1,15 +1,15 @@
 # Cross-provider installation
 
-Keep one source in `skills/company-profile-website/`. The `comp-ile init` CLI
-installs all packaged skill files, including `references/` and `assets/`, into
+Keep each skill's source in `skills/<skill-name>/`. The `comp-ile init` CLI
+installs all files for the selected skills, including `references/` and `assets/`, into
 the location read by the target application. Relative instruction links keep working.
 
-## Install the CLI from GitHub
+## Install the CLI from npm
 
-Requires Node.js 20 or later, npm, and Git to fetch the package from GitHub:
+Requires Node.js 20 or later and npm:
 
 ```sh
-npm install -g github:Valerie6048/comp-ile-skills
+npm install -g @niinya/comp-ile
 comp-ile init
 ```
 
@@ -24,17 +24,32 @@ Missing directories are created automatically. By default, all three providers
 are supported through two locations: Codex and Antigravity share `.agents/skills/`,
 while Claude Code uses `.claude/skills/`.
 
+The default skill is `company-profile-website`. To select analytics, inquiries,
+showcase production, or all packaged skills:
+
+```sh
+comp-ile init ./website --skill website-analytics
+comp-ile init ./website --skill website-inquiries
+comp-ile init ./website --skill company-profile-showcase
+comp-ile init ./website --skill all
+```
+
+This copies instructions; it does not create service accounts or activate integrations.
+
 For a one-time run without global installation:
 
 ```sh
-npx --yes --package=github:Valerie6048/comp-ile-skills comp-ile init ./website
+npx @niinya/comp-ile init ./website
 ```
 
-GitHub fetching uses [npm install](https://docs.npmjs.com/cli/v11/commands/npm-install/),
+Package fetching uses [npm install](https://docs.npmjs.com/cli/v11/commands/npm-install/),
 the command name uses [`bin`](https://docs.npmjs.com/cli/v11/configuring-npm/package-json/#bin),
 and temporary package execution uses [npm exec/npx](https://docs.npmjs.com/cli/v11/commands/npm-exec/).
-This package has not been published to the npm registry; use the GitHub source
-in the command.
+To install from the GitHub source instead, Git is also required:
+
+```sh
+npm install -g github:Valerie6048/comp-ile-skills
+```
 
 ## CLI options
 
@@ -44,6 +59,8 @@ in the command.
 | `--dir <directory>` | Alternative destination argument; use only one form |
 | `--provider <name>` | `all` (default), `codex`, `claude-code`, or `antigravity` |
 | `--provider codex,claude-code` | Select multiple providers; the option can also be repeated |
+| `--skill <name>` | `company-profile-website` (default), `website-analytics`, `website-inquiries`, `company-profile-showcase`, or `all` |
+| `--skill company-profile-website,website-analytics` | Select multiple skills; the option can also be repeated |
 | `--dry-run` | Check destinations and display the plan without writing |
 | `--force` | Update differing packaged files while preserving additional files |
 | `--help` / `--version` | CLI help or version |
@@ -56,13 +73,13 @@ comp-ile init ./website --force
 ```
 
 Rerunning does not rewrite identical files. Conflicts are checked at every
-destination before copying begins. If a packaged file differs, the command fails
+destination across all selected skills before copying begins. If a packaged file differs, the command fails
 with a conflict list; review it and use `--force` to replace those files. This option
 does not delete additional files. Provider paths or packaged file destinations
 that are symlinks/junctions, and file/directory type conflicts, are still rejected
 with `--force` so copying follows the intended project destination.
 
-To update the skill source, reinstall the CLI from GitHub, inspect the plan with
+To update the skill source, run `npm install -g @niinya/comp-ile@latest`, inspect the plan with
 `comp-ile init --dry-run`, then use `--force` if you intend to replace differing
 files. Version selection and preservation of local edits are explained in the
 [update guide](docs/versions-and-updates.md).
@@ -95,6 +112,9 @@ cloud environments have their own discovery mechanisms.
 | Antigravity 2.0 / IDE | `<project>/.agents/skills/company-profile-website/` | `~/.gemini/config/skills/company-profile-website/` |
 | Antigravity CLI | `<project>/.agents/skills/company-profile-website/` | `~/.gemini/antigravity-cli/skills/company-profile-website/` |
 
+The table shows the default skill. For another skill, use `website-analytics`,
+`website-inquiries`, or `company-profile-showcase` as the last folder name at the same location.
+
 Locations and discovery behavior follow the official documentation from
 [OpenAI](https://learn.chatgpt.com/docs/build-skills),
 [Claude Code](https://code.claude.com/docs/en/skills), and
@@ -115,6 +135,18 @@ the provider's precedence or duplication behavior.
 | Codex | `Use $company-profile-website to create my company's website.` |
 | Claude Code | `/company-profile-website` followed by the brief |
 | Antigravity 2.0 / CLI | `/company-profile-website` followed by the brief |
+
+For analytics, use `$website-analytics` in Codex or `/website-analytics` in the
+slash-command examples, followed by the setup, audit, or maintenance request.
+From this checkout, ask the agent to read `skills/website-analytics/SKILL.md`.
+
+For inquiry forms, use `$website-inquiries` or `/website-inquiries` in the same
+examples. From this checkout, ask the agent to read `skills/website-inquiries/SKILL.md`.
+
+For showcase videos, use `$company-profile-showcase` or `/company-profile-showcase`.
+From this checkout, ask the agent to read `skills/company-profile-showcase/SKILL.md`.
+Installing this skill copies production instructions and a timing helper; it
+does not render a video or install media tooling.
 
 Invocation follows the guides from
 [OpenAI](https://learn.chatgpt.com/docs/build-skills),
@@ -142,7 +174,7 @@ remains unverified or cannot be performed.
 ## Sharing and updates
 
 Share the repository or an archive containing the entire
-`company-profile-website/` folder. Users install it according to the table.
+selected skill folder, including its references and assets. Users install it according to the table.
 Plugin packaging may be added for distribution through a specific application's
 plugin system; each application's manifest should be handled separately from
 the core skill.
